@@ -23,8 +23,6 @@ jobs:
 
       - name: Install dependencies
         run: uv sync --frozen
-        env:
-          UV_PROJECT_ENVIRONMENT: "/usr/local/"
 
       - name: Run hello
         run: uv run src/hello.py
