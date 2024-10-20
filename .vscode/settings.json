@@ -21,9 +21,7 @@
     ".ruff_cache": true,
     ".venv": true
   },
-  "python.analysis.ignore": ["**/migrations"],
   "python.analysis.autoImportCompletions": true,
-  "python.analysis.typeCheckingMode": "strict",
   "python.analysis.fixAll": [
     "source.unusedImports",
     "source.convertImportFormat"

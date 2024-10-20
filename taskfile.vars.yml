@@ -4,3 +4,4 @@ vars:
   DOCKER: "docker"
   DOCKER_COMPOSE: "{{.DOCKER}} compose"
   APP_CONTAINER_NAME: "app"
+  # DJANGO: 'python ./src/manage.py'

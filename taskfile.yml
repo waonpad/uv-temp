@@ -58,3 +58,30 @@ tasks:
       - task: utils:exec
         vars:
           CMD: pyright
+
+  # runserver:
+  #   desc: 開発用サーバーを起動する
+  #   aliases:
+  #     - rs
+  #   cmds:
+  #     - task: utils:exec
+  #       vars:
+  #         CMD: "{{.DJANGO}} runserver 0.0.0.0:{{.APP_PORT}}"
+
+  # make-migrations:
+  #   desc: マイグレーションファイルを作成する
+  #   aliases:
+  #     - mm
+  #   cmds:
+  #     - task: utils:exec
+  #       vars:
+  #         CMD: "{{.DJANGO}} makemigrations"
+
+  # migrate:
+  #   desc: マイグレーションを実行する
+  #   aliases:
+  #     - m
+  #   cmds:
+  #     - task: utils:exec
+  #       vars:
+  #         CMD: "{{.DJANGO}} migrate"
