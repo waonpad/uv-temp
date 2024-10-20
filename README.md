@@ -8,13 +8,24 @@
 | 型チェック           | [Pyright, Pylance](https://microsoft.github.io/pyright/#/) |
 | リント, フォーマット | [Ruff](https://docs.astral.sh/ruff/)                       |
 | タスクランナー       | [Taskfile](https://taskfile.dev/)                          |
+| Git フック           | [lefthook](https://github.com/evilmartians/lefthook)       |
 
 ## セットアップ
 
 ### Taskfile をインストール
 
+taskfile の設定ファイルを見て手動で実行するのであれば不要
+
 ```bash
 brew install go-task/tap/go-task
+```
+
+### lefthook をインストール
+
+DevContainer の中でしか作業しない場合は不要
+
+```bash
+brew install lefthook && lefthook install
 ```
 
 ### .env ファイルをコピー

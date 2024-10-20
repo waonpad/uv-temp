@@ -1,18 +1,23 @@
-# Use a Python image with uv pre-installed
-FROM ghcr.io/astral-sh/uv:python3.13-bookworm
+# 既にuvがインストールされているイメージをベースにする
+FROM ghcr.io/astral-sh/uv:0.4.24-python3.13-bookworm
 
+# 諸々の環境変数を設定
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV UV_LINK_MODE=copy
-# Use the system Python environment
+
+# venvを使わないようにする
 ENV UV_PROJECT_ENVIRONMENT="/usr/local/"
 
-# Install the Taskfile CLI.
+# Taskfileをインストール
 RUN sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
 
-# Copy the application into the container.
+# ルートディレクトリをそのままコピー
 COPY . /workspace
-
-# Install the application dependencies.
+# 作業ディレクトリをコピーしたディレクトリに変更
 WORKDIR /workspace
+
+# 依存関係をインストール
 RUN uv sync --frozen --no-cache
+# Gitフックを有効化
+RUN lefthook install

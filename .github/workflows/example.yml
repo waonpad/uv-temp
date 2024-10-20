@@ -1,0 +1,30 @@
+name: Example
+
+on:
+  workflow_dispatch:
+
+# https://docs.astral.sh/uv/guides/integration/github/#setting-up-python
+
+jobs:
+  uv-example:
+    name: python
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+
+      - name: "Set up Python"
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install dependencies
+        run: uv sync --frozen
+        env:
+          UV_PROJECT_ENVIRONMENT: "/usr/local/"
+
+      - name: Run hello
+        run: uv run src/hello.py
