@@ -1,0 +1,60 @@
+version: "3"
+
+dotenv:
+  - ".env"
+
+includes:
+  vars: taskfile.vars.yml
+  utils:
+    taskfile: taskfile.utils.yml
+  docker:
+    taskfile: taskfile.docker.yml
+    aliases:
+      - d
+
+tasks:
+  copy-env:
+    desc: 環境変数ファイルのコピーを行う
+    cmds:
+      - cp -n .env.example .env
+
+  setup:
+    desc: プロジェクトのセットアップを行う
+    cmds:
+      - task: docker:build
+      - task: docker:up
+
+  lint:
+    desc: コードスタイルの検査を行う
+    aliases:
+      - l
+    cmds:
+      - task: utils:exec
+        vars:
+          CMD: ruff check --fix
+
+  format:
+    desc: コードスタイルの整形を行う
+    aliases:
+      - f
+    cmds:
+      - task: utils:exec
+        vars:
+          CMD: ruff format
+
+  lint-and-format:
+    desc: コードスタイルの検査と整形を行う
+    aliases:
+      - lf
+    cmds:
+      - task: lint
+      - task: format
+
+  type-check:
+    desc: 型チェックを行う
+    aliases:
+      - t
+    cmds:
+      - task: utils:exec
+        vars:
+          CMD: pyright
