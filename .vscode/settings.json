@@ -10,7 +10,7 @@
       "source.fixAll": "explicit"
     }
   },
-  "ruff.exclude": ["migrations"],
+  // "ruff.exclude": ["migrations"],
   "ruff.lint.select": ["E4", "E7", "E9", "F", "B", "Q"],
   "ruff.lint.extendSelect": ["I"],
   "ruff.lint.ignore": ["B008"],

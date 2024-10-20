@@ -15,9 +15,9 @@ dev-dependencies = [
 
 [tool.ruff]
 src = ["src"]
-extend-exclude = [
-    "migrations"
-]
+# extend-exclude = [
+#     "migrations"
+# ]
 
 [tool.ruff.lint]
 select = ["E4", "E7", "E9", "F", "B", "Q"]
@@ -28,6 +28,6 @@ extend-select = ["I"]
 
 [tool.pyright]
 typeCheckingMode = "strict"
-exclude = [
-    "**/migrations"
-]
+# exclude = [
+#     "**/migrations"
+# ]
