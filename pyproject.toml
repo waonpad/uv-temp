@@ -15,16 +15,26 @@ dev-dependencies = [
 
 [tool.ruff]
 src = ["src"]
+line-length = 120
 # extend-exclude = [
 #     "migrations"
 # ]
 
 [tool.ruff.lint]
-select = ["E4", "E7", "E9", "F", "B", "Q"]
+select = ["ALL"]
 ignore = [
-    "B008"
+    "ANN1", "E999", "UP027", "PT004", "PT005", # 非推奨ルール
+    "D", # docstring関連は緩くやりたいので全部無視する
+    "TD001", # FIXMEをコメントのタグに使用可能にする
+    "TD002", # TODOのauthorを不要にする
+    "TD003", # TODOのチケットへのリンクを不要にする
+    "ANN201", # 毎回関数の返り値の型を書くのは面倒なので無視する
+    # "PD011", # pandasを使う場合
+    # "B008", # FastAPIでDependsを使う場合
 ]
 extend-select = ["I"]
+# https://docs.astral.sh/ruff/settings/#lint_logger-objects
+logger-objects = []
 
 [tool.pyright]
 typeCheckingMode = "strict"
