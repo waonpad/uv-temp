@@ -37,20 +37,30 @@ jobs:
       - name: Run Type Check
         # https://github.com/jordemort/action-pyright
         uses: jordemort/action-pyright@v1
+        id: type-check
+        continue-on-error: true
         with:
           github_token: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
           reporter: github-pr-review
           lib: true
           level: info
-          fail_on_error: false
+          fail_on_error: true
 
-      # - name: Run Check Format
-      #   run: uv run ruff format --check | reviewdog -f=black -reporter=github-pr-review -fail-level=any
-      #   env:
-      #     REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
+      - name: Run Check Format
+        id: check-format
+        continue-on-error: true
+        run: uv run ruff format --check | reviewdog -f=black -reporter=github-pr-review -fail-level=any
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
 
-      # - name: Run Lint
-      #   run: uv run ruff check --output-format=github
+      - name: Run Lint
+        id: lint
+        continue-on-error: true
+        run: uv run ruff check --output-format=github
 
-      # - name: Run hello
-      #   run: uv run src/hello.py
+      - name: Error Handling
+        if: steps.type-check.outcome == 'failure' || steps.check-format.outcome == 'failure' || steps.lint.outcome == 'failure'
+        run: exit 1
+
+      - name: Run hello
+        run: uv run src/hello.py
