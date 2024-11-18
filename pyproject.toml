@@ -24,6 +24,7 @@ line-length = 120
 select = ["ALL"]
 ignore = [
     "ANN1", "E999", "UP027", "PT004", "PT005", # 非推奨ルール
+    "COM812", "ISC001", # Ruffの警告が出るので無視
     "D", # docstring関連は緩くやりたいので全部無視する
     "TD001", # FIXMEをコメントのタグに使用可能にする
     "TD002", # TODOのauthorを不要にする
