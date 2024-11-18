@@ -5,8 +5,6 @@ def main():
 
     print(a)  # 型エラー用  # noqa: T201
 
-    print(1)  # リントエラー用
-
 
     return 0  # フォーマット用
 

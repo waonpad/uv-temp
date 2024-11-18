@@ -36,6 +36,7 @@ jobs:
 
       - name: Run Type Check
         # https://github.com/jordemort/action-pyright
+        # リポジトリのGitHub Actionsのワークフロー権限の設定でGITHUB_TOKENに書き込み権限を与える必要がある
         uses: jordemort/action-pyright@v1
         id: type-check
         continue-on-error: true
