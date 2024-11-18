@@ -2,12 +2,10 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
-      target: ${APP_ENV:-development}
+      dockerfile: ${APP_ENV:-dev}.Dockerfile
     volumes:
       - .:/workspace
-    # ports:
-    #   - "${APP_PORT_HOST}:${APP_PORT}"
+    ports:
+      - "${APP_PORT_HOST}:${APP_PORT}"
     tty: true
     stdin_open: true
-    command: /bin/bash

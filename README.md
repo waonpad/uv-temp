@@ -27,5 +27,5 @@ task --list
 ## 本番イメージビルド
 
 ```bash
-APP_ENV=production docker compose build
+APP_ENV=prod docker compose build
 ```

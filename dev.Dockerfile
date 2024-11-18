@@ -1,5 +1,5 @@
 # 既にuvがインストールされているイメージをベースにする
-FROM ghcr.io/astral-sh/uv:0.4.24-python3.13-bookworm AS development
+FROM ghcr.io/astral-sh/uv:0.4.24-python3.13-bookworm
 
 # 作業ディレクトリを設定
 WORKDIR /workspace
@@ -25,13 +25,5 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 COPY . /workspace
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen
-
-ENTRYPOINT []
-
-# 本番ではuvを使わないのでPythonのslimイメージをベースにする
-FROM python:3.13-slim-bookworm AS production
-
-# /workspaceだけコピー
-COPY --from=development /workspace /workspace
 
 ENTRYPOINT []
