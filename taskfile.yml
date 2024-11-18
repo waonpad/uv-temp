@@ -3,11 +3,6 @@ version: "3"
 dotenv:
   - ".env"
 
-includes:
-  vars: taskfile.vars.yml
-  utils:
-    taskfile: taskfile.utils.yml
-
 tasks:
   copy-env:
     desc: 環境変数ファイルのコピーを行う
@@ -17,25 +12,22 @@ tasks:
   setup:
     desc: プロジェクトのセットアップを行う
     cmds:
-      - docker compose up -d
+      - task: copy-env
+      - lefthook install
 
   lint:
     desc: コードスタイルの検査を行う
     aliases:
       - l
     cmds:
-      - task: utils:exec
-        vars:
-          CMD: ruff check --fix
+      - ruff check --fix
 
   format:
     desc: コードスタイルの整形を行う
     aliases:
       - f
     cmds:
-      - task: utils:exec
-        vars:
-          CMD: ruff format
+      - ruff format
 
   lint-and-format:
     desc: コードスタイルの検査と整形を行う
@@ -50,33 +42,4 @@ tasks:
     aliases:
       - t
     cmds:
-      - task: utils:exec
-        vars:
-          CMD: pyright
-
-  # runserver:
-  #   desc: 開発用サーバーを起動する
-  #   aliases:
-  #     - rs
-  #   cmds:
-  #     - task: utils:exec
-  #       vars:
-  #         CMD: "{{.DJANGO}} runserver 0.0.0.0:{{.APP_PORT}}"
-
-  # make-migrations:
-  #   desc: マイグレーションファイルを作成する
-  #   aliases:
-  #     - mm
-  #   cmds:
-  #     - task: utils:exec
-  #       vars:
-  #         CMD: "{{.DJANGO}} makemigrations"
-
-  # migrate:
-  #   desc: マイグレーションを実行する
-  #   aliases:
-  #     - m
-  #   cmds:
-  #     - task: utils:exec
-  #       vars:
-  #         CMD: "{{.DJANGO}} migrate"
+      - pyright

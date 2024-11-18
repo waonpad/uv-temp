@@ -1,11 +1,9 @@
 name: CI
 
 on:
-  push:
-    branches: [main]
   pull_request:
-    branches: [main]
-  workflow_dispatch:
+    branches:
+      - main
 
 # https://docs.astral.sh/uv/guides/integration/github/#setting-up-python
 
@@ -61,6 +59,3 @@ jobs:
       - name: Error Handling
         if: steps.type-check.outcome == 'failure' || steps.format.outcome == 'failure' || steps.lint.outcome == 'failure'
         run: exit 1
-
-      - name: Run hello
-        run: uv run src/hello.py

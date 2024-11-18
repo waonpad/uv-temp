@@ -12,38 +12,7 @@
 
 ## セットアップ
 
-### Taskfile をインストール
-
-taskfile の設定ファイルを見て手動で実行するのであれば不要
-
-```bash
-brew install go-task/tap/go-task
-```
-
-### lefthook をインストール
-
-DevContainer の中でしか作業しない場合は不要
-
-```bash
-brew install lefthook && lefthook install
-```
-
-### .env ファイルをコピー
-
-```bash
-task copy-env
-```
-
-### Docker コンテナの起動
-
-💡 デフォルトは Docker を使用する設定になっている  
-Podman を使用する場合は `taskfile.vars.yml` の `DOCKER` と `DOCKER_COMPOSE` を `podman` に変更する
-
-```bash
-task setup
-```
-
-### DevContainer を起動
+### DevContainer を起動してPythonのコンテナに入る
 
 VSCode の拡張機能を使う
 

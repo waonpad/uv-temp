@@ -31,6 +31,7 @@
 
   // Uncomment the next line to run commands after the container is created.
   // "postCreateCommand": "cat /etc/os-release",
+  "postCreateCommand": "task setup",
 
   // Configure tool-specific properties.
   // "customizations": {},

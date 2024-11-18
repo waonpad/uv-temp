@@ -19,5 +19,3 @@ WORKDIR /workspace
 
 # 依存関係をインストール
 RUN uv sync --frozen --no-cache
-# Gitフックを有効化
-RUN lefthook install
