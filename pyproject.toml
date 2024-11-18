@@ -8,9 +8,9 @@ dependencies = []
 
 [tool.uv]
 dev-dependencies = [
-    "lefthook>=1.7.22",
-    "pyright>=1.1.385",
-    "ruff>=0.7.0",
+    "lefthook>=1.8.4",
+    "pyright>=1.1.389",
+    "ruff>=0.7.4",
 ]
 
 [tool.ruff]
