@@ -7,10 +7,6 @@ includes:
   vars: taskfile.vars.yml
   utils:
     taskfile: taskfile.utils.yml
-  docker:
-    taskfile: taskfile.docker.yml
-    aliases:
-      - d
 
 tasks:
   copy-env:
@@ -21,8 +17,7 @@ tasks:
   setup:
     desc: プロジェクトのセットアップを行う
     cmds:
-      - task: docker:build
-      - task: docker:up
+      - docker compose up -d
 
   lint:
     desc: コードスタイルの検査を行う
