@@ -12,7 +12,7 @@
 
 ## セットアップ
 
-### DevContainer を起動してPythonのコンテナに入る
+### DevContainer を起動して Python のコンテナに入る
 
 VSCode の拡張機能を使う
 
@@ -23,3 +23,9 @@ task --list
 ```
 
 コンテナ内で実行されるタスクはホストマシンからも同じコマンドで実行できる
+
+## 本番イメージビルド
+
+```bash
+APP_ENV=production docker compose build
+```
