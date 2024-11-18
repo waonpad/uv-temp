@@ -31,6 +31,8 @@ ignore = [
     "ANN201", # 毎回関数の返り値の型を書くのは面倒なので無視する
     # "PD011", # pandasを使う場合
     # "B008", # FastAPIでDependsを使う場合
+    "COM812",
+    "ISC001",
 ]
 extend-select = ["I"]
 # https://docs.astral.sh/ruff/settings/#lint_logger-objects
