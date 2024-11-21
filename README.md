@@ -27,9 +27,13 @@ task --list
 
 ## Cloud Run にデプロイ
 
+**デプロイが行える状態まで事前に準備しておく**  
 [クイックスタート: Cloud Run に Python サービスをデプロイする  |  Cloud Run Documentation  |  Google Cloud](https://cloud.google.com/run/docs/quickstarts/build-and-deploy/deploy-python-service?hl=ja)
 
-**デプロイが行える状態まで事前に準備しておく**
+詳細なオプション  
+[gcloud run deploy  |  Google Cloud CLI Documentation](https://cloud.google.com/sdk/gcloud/reference/run/deploy)
+
+### デプロイ
 
 ```bash
 gcloud run deploy --source . --port=8000 --region asia-northeast1 --allow-unauthenticated
@@ -37,7 +41,21 @@ gcloud run deploy --source . --port=8000 --region asia-northeast1 --allow-unauth
 
 サービス名を実行時に指定する場合は `--service` オプションを使う
 
-TDOO: 環境変数等のデプロイ手順
+### 環境変数込みでデプロイする場合
+
+.env ファイルから yml ファイルに変換するスクリプトを用意
+https://github.com/waonpad/env-2-yml/tree/main/build  
+※ 手動でやってもいい
+
+```bash
+./env-2-yml-darwin-arm64 .env.prod
+```
+
+```bash
+gcloud run deploy --source . --port=8000 --region asia-northeast1 --allow-unauthenticated --env-vars-file=.env.prod.yml
+```
+
+全環境変数削除オプション `--clear-env-vars`
 
 ### リソースの削除
 
