@@ -44,11 +44,11 @@ gcloud run deploy --source . --port=8000 --region asia-northeast1 --allow-unauth
 ### 環境変数込みでデプロイする場合
 
 .env ファイルから yml ファイルに変換するスクリプトを用意
-https://github.com/waonpad/env-2-yml/tree/main/build  
+https://github.com/waonpad/env2yml/tree/main/build  
 ※ 手動でやってもいい
 
 ```bash
-./env-2-yml-darwin-arm64 .env.prod
+./env2yml-darwin-arm64 .env.prod
 ```
 
 ```bash
