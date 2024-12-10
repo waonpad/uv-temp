@@ -1,5 +1,5 @@
 # 既にuvがインストールされているイメージをベースにする
-FROM ghcr.io/astral-sh/uv:0.4.24-python3.13-bookworm
+FROM --platform=linux/amd64 ghcr.io/astral-sh/uv:0.4.24-python3.13-bookworm
 
 # 作業ディレクトリを設定
 WORKDIR /workspace
