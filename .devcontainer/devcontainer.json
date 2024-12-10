@@ -31,17 +31,12 @@
 
   // Uncomment the next line to run commands after the container is created.
   // "postCreateCommand": "cat /etc/os-release",
-  "postCreateCommand": "task setup",
 
   // Configure tool-specific properties.
   // "customizations": {},
   "customizations": {
     "vscode": {
-      "extensions": [
-        "ms-python.python",
-        "charliermarsh.ruff",
-        "task.vscode-task"
-      ]
+      "extensions": ["ms-python.python", "charliermarsh.ruff"]
     }
   }
   // Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
