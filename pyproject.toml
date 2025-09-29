@@ -5,14 +5,15 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "fastapi[standard]>=0.115.5",
+    "fastapi[standard]>=0.118.0",
+    "pydantic>=2.9.2",
 ]
 
 [tool.uv]
 dev-dependencies = [
-    "lefthook>=1.8.4",
-    "pyright>=1.1.389",
-    "ruff>=0.7.4",
+    "lefthook>=1.13.5",
+    "pyright>=1.1.405",
+    "ruff>=0.13.2",
 ]
 
 [tool.ruff]
